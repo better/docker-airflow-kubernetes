@@ -1,8 +1,6 @@
 ---
 version: 1
 reviewers:
-  dmou:
-    slack: "Doci Mou"
   ewgarci:
     slack: "Eddy Garcia"
   imsky:
