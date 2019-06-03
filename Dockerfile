@@ -12,10 +12,11 @@ ENV LC_ALL en_US.UTF-8
 ENV LC_CTYPE en_US.UTF-8
 ENV LC_MESSAGES en_US.UTF-8
 
-ARG AIRFLOW_VERSION=1.10.2
+ARG AIRFLOW_VERSION=1.10.3
 ARG AIRFLOW_HOME=/usr/local/airflow
 ARG PYTHON_DEPS=""
 ENV AIRFLOW_GPL_UNIDECODE yes
+ENV AIRFLOW_HOME=${AIRFLOW_HOME}
 
 ENV BUILD_DEPS 'freetds-dev libkrb5-dev libsasl2-dev libssl-dev libffi-dev libpq-dev git'
 RUN apt-get update -yqq && \
@@ -44,4 +45,6 @@ RUN apt-get update -yqq && \
 
 EXPOSE 8080 8793
 USER airflow
+
+RUN mkdir -p ${AIRFLOW_HOME}/airflow/dags
 WORKDIR ${AIRFLOW_HOME}
